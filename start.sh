@@ -1,5 +1,17 @@
 #!/bin/bash
 
+connect_proxy() {
+  adb shell settings put global http_proxy 144.76.124.83:824
+
+  adb shell am start -a android.intent.action.VIEW -d "https://gmail.com" com.android.chrome
+
+  /bin/sleep 2
+  adb shell input text "7384c2303b4e4f06b250"
+  adb shell input tap 500 1000
+  adb shell input text "abfaf0a16f66ecdc"
+  adb shell input tap 930 1155
+}
+
 # Функция для создания аккаунта Gmail
 create_gmail_account() {
     # Параметры
@@ -83,11 +95,13 @@ create_gmail_account() {
 }
 
 # Проверка на количество аргументов
-if [ $# -ne 7 ]; then
-    echo "Использование: $0 <First Name> <Last Name> <Day> <Year> <Email name> <Password> <Tel>"
-    exit 1
-fi
+# if [ $# -ne 7 ]; then
+#     echo "Использование: $0 <First Name> <Last Name> <Day> <Year> <Email name> <Password> <Tel>"
+#     exit 1
+# fi
 
 # Вызов функции с переданными аргументами
-create_gmail_account "$1" "$2" "$3" "$4" "$5" "$6" "$7"
+#create_gmail_account "$1" "$2" "$3" "$4" "$5" "$6" "$7"
 #./trycatch.sh "Jhon" "Due" "02" "1990" "0001try0003catch" "thisIsPass123123" "7776660041"
+
+connect_proxy
