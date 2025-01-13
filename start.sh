@@ -10,6 +10,7 @@ connect_proxy() {
   adb shell input tap 500 1000
   adb shell input text "abfaf0a16f66ecdc"
   adb shell input tap 930 1155
+  #adb shell settings get global http_proxy
 }
 
 # Функция для создания аккаунта Gmail
